@@ -1,0 +1,7 @@
+{
+  "name": "fatorabit-fe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
