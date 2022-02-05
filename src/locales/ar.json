@@ -1,0 +1,21 @@
+{
+  "message": "hello i18n !!",
+  "Total Invoice Amount": "مجموع الفواتير",
+  "SAR": "ريال سعودي",
+  "Recent Invoices": "اخر الفواتير",
+  "See All": "عرض الكل",
+  "No Invoices have been created yet": "لايوجد اي فواتير حتى الان",
+  "invoices": "الفواتير",
+  "Search": "بحث",
+  "No Items have been created yet": "لايوجد اي اصناف حتى الان",
+  "items": "اصناف",
+  "Account": "الحساب",
+  "Update Account": "تحديث الحساب",
+  "Change Password": "تغيير كلمة المرور",
+  "Update Subscription": "تحديث الاشتراك",
+  "Notifications": "الاشعارات",
+  "Logout": "تسجيل الخروج",
+  "settings":"الاعدادت",
+  "Fatora":"فاتورة",
+  "bit":"بت"
+}

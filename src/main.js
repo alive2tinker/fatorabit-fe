@@ -23,12 +23,16 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const app = createApp(App)
+import store from './store'
+import i18n from './i18n'
+
+const app = createApp(App).use(i18n).use(store)
   .use(IonicVue,{
+    rippleEffect: false,
     mode:'ios'
   })
   .use(router);
-  
+
 router.isReady().then(() => {
   app.mount('#app');
 });

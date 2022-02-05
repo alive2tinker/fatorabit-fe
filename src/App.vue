@@ -4,7 +4,7 @@
   </ion-app>
 </template>
 
-<script lang="ts">
+<script>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { defineComponent } from 'vue';
 
@@ -13,6 +13,9 @@ export default defineComponent({
   components: {
     IonApp,
     IonRouterOutlet
-  }
+  },
+  created(){
+    document.body.setAttribute('dir', this.$i18n.locale === 'ar' ? 'rtl' : 'ltr')
+  },
 });
 </script>
