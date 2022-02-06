@@ -1,10 +1,22 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import TabsPage from '../views/TabsPage.vue'
+import SettingsPage from '../views/account/IndexPage.vue'
 
 const routes = [
   {
     path: '/',
     redirect: '/tabs/tab1'
+  },
+  {
+    path: '/settings/',
+    component: SettingsPage,
+    children: [
+      {
+        path:'update',
+        name: 'account.update',
+        component: () => import('@/views/account/UpdatePage.vue')
+      }
+    ]
   },
   {
     path: '/tabs/',
