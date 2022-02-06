@@ -36,14 +36,24 @@
           :placeholder="$t('your new phone number')"
         />
       </div>
+      <ion-button expand="block" class="mt-4">{{ $t('Update Account Details')}}</ion-button>
+      <ion-button fill="" expand="block" @click="() => router.push({name:'contactus'})" class="text-green-700 uppercase font-semibold">{{ $t('contact us')}}</ion-button>
     </div>
   </app-layout>
 </template>
 
 <script>
 import AppLayout from "../layouts/AppLayout.vue";
+import { useRouter } from 'vue-router'
+import {IonButton} from '@ionic/vue'
 export default {
-  components: { AppLayout },
+  components: { AppLayout, IonButton },
+  setup(){
+    const router = useRouter();
+    return {
+      router
+    }
+  }
 };
 </script>
 
