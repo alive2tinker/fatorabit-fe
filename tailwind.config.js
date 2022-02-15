@@ -1,7 +1,16 @@
+const colors = require("tailwindcss/colors");
 module.exports = {
   content: ["./src/**/*.{html,js,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Cairo", "Nunito"],
+      },
+      colors: {
+        teal: colors.teal,
+        cyan: colors.cyan,
+      },
+    },
   },
-  plugins: [require('@tailwindcss/forms')],
-}
+  plugins: [require("@tailwindcss/forms")],
+};
