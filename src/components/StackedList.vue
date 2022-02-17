@@ -21,7 +21,6 @@ export default {
   },
   methods: {
       goToResource(item){
-          alert('hello')
           if(this.type === 'invoices'){
               this.router.push({name:'invoices.show', params:{id: item.uuid}})
           }

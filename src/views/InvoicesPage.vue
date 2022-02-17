@@ -2,11 +2,11 @@
   <app-layout :title="$t('invoices')">
     <ion-searchbar
       slot="fixed"
-      class="bg-white"
+      class=""
       :placeholder="$t('Search')"
       v-model="keyword"
     ></ion-searchbar>
-    <div v-if="invoices.length > 0">
+    <div v-if="filteredInvoices.length > 0">
       <stacked-list :data="filteredInvoices" type="invoices"/>
     </div>
     <div class="w-full border border-gray-300 rounded-xl py-4 mt-12" v-else>
