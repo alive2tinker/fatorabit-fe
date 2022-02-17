@@ -75,7 +75,6 @@ const AuthModule = {
             })
         },
         storeUser({commit}, user) {
-            alert('the next alert is user inside storeUser')
             alert(JSON.stringify(user));
             let userObject = {
                 name: user.user.name,

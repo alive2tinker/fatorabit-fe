@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import TabsPage from "../views/TabsPage.vue";
+import InvoicesPage from "../views/invoices/IndexPage.vue";
 import SettingsPage from "../views/account/IndexPage.vue";
 import store from '../store';
 import { Storage } from '@capacitor/storage'
@@ -20,6 +21,17 @@ const routes = [
     redirect: "/tabs/tab1",
   },
   {
+    path: "/invoices/",
+    component: InvoicesPage,
+    children: [
+      {
+        path: '/invoices/:id',
+        name: 'invoices.show',
+        component: () => import('@/views/invoices/ShowPage.vue')
+      }
+    ]
+  },
+  {
     path: "/settings/",
     component: SettingsPage,
     children: [
@@ -37,22 +49,22 @@ const routes = [
       {
         path: "",
         name: 'Home',
-        redirect: "/tabs/tab1",
+        redirect: "/tabs/home",
       },
       {
-        path: "tab1",
+        path: "home",
         component: () => import("@/views/HomePage.vue"),
       },
       {
-        path: "tab2",
+        path: "invoices",
         component: () => import("@/views/InvoicesPage.vue"),
       },
       {
-        path: "tab3",
+        path: "items",
         component: () => import("@/views/ItemsPage.vue"),
       },
       {
-        path: "tab4",
+        path: "settings",
         component: () => import("@/views/SettingsPage.vue"),
       },
     ],
