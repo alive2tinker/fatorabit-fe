@@ -21,7 +21,7 @@
       </h3>
     </div>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
+      <ion-fab-button @click="() => router.push({name: 'invoices.create'})">
         <ion-icon :icon="addOutline"></ion-icon>
       </ion-fab-button>
     </ion-fab>
@@ -34,6 +34,7 @@ import { addOutline } from "ionicons/icons";
 import AppLayout from "./layouts/AppLayout.vue";
 import { mapActions, mapGetters } from "vuex";
 import StackedList from '@/components/StackedList.vue'
+import { useRouter } from 'vue-router'
 export default {
   components: { AppLayout, IonFab, IonSearchbar, IonFabButton, IonIcon, StackedList },
   computed: {
@@ -63,8 +64,10 @@ export default {
       });
   },
   setup() {
+    const router = useRouter();
     return {
       addOutline,
+      router
     };
   },
   methods: {

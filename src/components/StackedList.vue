@@ -4,8 +4,8 @@
     <li v-for="item in data" :key="item.id" class="py-4 px-2 flex">
       <a @click="goToResource(item)">
         <div class="ml-3">
-          <p class="text-sm font-medium text-gray-900">{{ item.title }}</p>
-          <p class="text-sm text-gray-500">{{ item.total }}</p>
+          <p class="text-sm font-medium text-gray-900">{{ type === 'invoices' ? item.title : item.name }}</p>
+          <p class="text-sm text-gray-500">{{ type === 'invoices' ? item.total : item.unitPrice }}</p>
         </div>
       </a>
     </li>
@@ -17,7 +17,7 @@ import { useRouter } from 'vue-router';
 export default {
   props: {
     data: Object,
-    type: Object,
+    type: String,
   },
   methods: {
       goToResource(item){

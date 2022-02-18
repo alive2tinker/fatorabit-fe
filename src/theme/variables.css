@@ -244,3 +244,6 @@ http://ionicframework.com/docs/theming/ */
 ion-content{
   --background: #f8f8f8;
 }
+ion-header, ion-toolbar, ion-title{
+  --background: none !important;
+}

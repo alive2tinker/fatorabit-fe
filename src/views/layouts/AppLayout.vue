@@ -4,7 +4,7 @@
       <ion-header class="mt-7">
         <ion-toolbar style="--background: none; color: white">
           <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-back-button default-href="/"></ion-back-button>
           </ion-buttons>
           <ion-title>{{ title }}</ion-title>
         </ion-toolbar>
