@@ -24,11 +24,13 @@
           v-model="form.phone"
         ></ion-input>
         <ion-input
+          type="number"
           :class="{'border border-gray-300 indent-2 focus:border-teal-500':true, 'border-red-500': Object.keys(responseErrors).includes('vatRegistration')}"
           :placeholder="$t('VAT Registration')"
           v-model="form.vatRegistration"
         ></ion-input>
         <ion-input
+        type="email"
           :class="{'border border-gray-300 indent-2 focus:border-teal-500':true, 'border-red-500': Object.keys(responseErrors).includes('email')}"
           :placeholder="$t('Email')"
           v-model="form.email"
@@ -92,7 +94,8 @@ export default {
         password: "",
         password_confirmation: "",
         vatRegistration: '',
-        phone: ''
+        phone: '',
+        device_name: 'nuDevice'+Math.random(1,1001010)
       },
       errors: [],
       responseErrors: ''
@@ -111,7 +114,7 @@ export default {
       }).catch((error) => {
         // console.log(error.response.data.errors);
         this.responseErrors = error.response.data.errors;
-          this.$swal.fire(this.$t('Oops!'), error.message, "error");
+          alert(error.message);
       })
     },
     ...mapActions({

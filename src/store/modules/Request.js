@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '../index';
 import router from '../../router'
 
-const productionUrl = 'https://fatorabit.com.test/api/';
+const productionUrl = "https://fatorabit.com/api/";
 const testingUrl = 'https://fatorabit.com.test/api/';
 
 export default() => {

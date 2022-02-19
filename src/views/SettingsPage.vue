@@ -7,8 +7,11 @@
       <ion-item class="space-x-3" @click="() => router.push({name: 'account.update'})">
         <ion-icon :icon="personOutline"></ion-icon><ion-label>{{ $t('Update Account') }}</ion-label>
       </ion-item>
-      <ion-item class="space-x-2">
+      <ion-item @click="() => router.push({name: 'account.changePassword'})" class="space-x-2">
         <ion-icon :icon="shieldOutline"></ion-icon> <ion-label>{{ $t('Change Password') }}</ion-label>
+      </ion-item>
+      <ion-item @click="openLanguageModal" class="space-x-2">
+        <ion-icon :icon="globeOutline"></ion-icon> <ion-label>{{ $t('Change Language') }}</ion-label>
       </ion-item>
       <ion-item @click="submitLogout" class="text-red-700">
         <ion-icon :icon="logOutOutline"></ion-icon><ion-label>{{ $t('Logout') }}</ion-label>
@@ -19,17 +22,18 @@
 
 <script>
 import AppLayout from "./layouts/AppLayout.vue";
-import { IonList, IonItem, IonLabel, IonListHeader, IonIcon } from "@ionic/vue";
-import { shieldOutline, logOutOutline, notificationsOutline, walletOutline,personOutline } from 'ionicons/icons'
+import { IonList, IonItem, IonLabel, IonListHeader, IonIcon, modalController } from "@ionic/vue";
+import { shieldOutline, logOutOutline, notificationsOutline,globeOutline, walletOutline,personOutline } from 'ionicons/icons'
 import { useRouter } from 'vue-router';
 import { mapActions } from 'vuex';
+import Modal from '@/components/ModalComponent'
 export default {
   components: { AppLayout, IonList, IonItem, IonLabel, IonListHeader, IonIcon },
   setup(){
     const router = useRouter();
     return {
       shieldOutline,
-      logOutOutline, notificationsOutline, walletOutline,personOutline,
+      logOutOutline, notificationsOutline, walletOutline,personOutline,globeOutline,
       router
     }
   },
@@ -38,6 +42,15 @@ export default {
       this.logout().then(() => {
         this.router.push('/')
       })
+    },
+    async openLanguageModal(){
+      const modal = await modalController
+        .create({
+          component: Modal,
+          initialBreakpoint: 0.5,
+          breakpoints: [0, 0.5, 1]
+        })
+      return modal.present();
     },
     ...mapActions({
       logout: 'auth/logout'

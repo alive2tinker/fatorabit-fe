@@ -9,11 +9,6 @@
       <div v-else>
         <div class="w-screen h-1/3 rounded-b-2xl py-5 px-2 bg-main">
           <ion-chip>
-            <ion-avatar>
-              <img
-                src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-              />
-            </ion-avatar>
             <ion-label class="text-white">{{ user.name }}</ion-label>
           </ion-chip>
           <div class="flex py-1 h-auto">
@@ -40,7 +35,7 @@
             >{{ $t("See All") }}</ion-button
           >
         </div>
-        <div class="px-2">
+        <div class="px-2 -mt-10">
           <stacked-list type="invoices" :data="latestInvoices"></stacked-list>
         </div>
       </div>
@@ -55,7 +50,6 @@ import {
   IonContent,
   IonButton,
   IonChip,
-  IonAvatar,
   IonLabel,
 } from "@ionic/vue";
 import ApplicationLogo from "@/components/ApplicationLogo.vue";
@@ -69,7 +63,6 @@ export default defineComponent({
     IonPage,
     IonButton,
     IonChip,
-    IonAvatar,
     IonLabel,
     ApplicationLogo,
     StackedList,

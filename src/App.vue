@@ -1,5 +1,5 @@
 <template>
-  <ion-app>
+  <ion-app @localeChanged="handleNuLocale">
     <ion-router-outlet :key="router.path"/>
   </ion-app>
 </template>

@@ -28,34 +28,41 @@
             :placeholder="$t('Invoice Title')"
             v-model="form.customerId"
           >
-          <option value="">{{ $t('Choose') }}</option>
-          <option v-for="(customer, index) in customers" :key="index" :value="customer">{{ customer.name }}</option>
+            <option value="">{{ $t("Choose") }}</option>
+            <option
+              v-for="(customer, index) in customers"
+              :key="index"
+              :value="customer"
+            >
+              {{ customer.name }}
+            </option>
+            <option value="new">{{ $t("New") }}</option>
           </select>
-          <div v-if="form.customerId === 'new'">
+          <div class="space-y-3" v-if="form.customerId === 'new'">
             <input
-            :class="{
-              'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
-              'border-red-500': v$.form.customer.name.$error,
-            }"
-            :placeholder="$t('Customer Name')"
-            v-model="form.customer.name"
-          />
-          <input
-            :class="{
-              'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
-              'border-red-500': v$.form.customer.address.$error,
-            }"
-            :placeholder="$t('Customer address')"
-            v-model="form.customer.address"
-          />
-          <input
-            :class="{
-              'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
-              'border-red-500': v$.form.customer.phone.$error,
-            }"
-            :placeholder="$t('Customer phone')"
-            v-model="form.customer.phone"
-          />
+              :class="{
+                'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
+                'border-red-500': v$.form.customer.name.$error,
+              }"
+              :placeholder="$t('Customer Name')"
+              v-model="form.customer.name"
+            />
+            <input
+              :class="{
+                'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
+                'border-red-500': v$.form.customer.address.$error,
+              }"
+              :placeholder="$t('Customer address')"
+              v-model="form.customer.address"
+            />
+            <input
+              :class="{
+                'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
+                'border-red-500': v$.form.customer.phone.$error,
+              }"
+              :placeholder="$t('Customer phone')"
+              v-model="form.customer.phone"
+            />
           </div>
           <h6>{{ $t("Terms and conditions of the invoice") }}</h6>
           <select
@@ -66,7 +73,11 @@
             }"
           >
             <option value="">{{ $t("Choose") }}</option>
-            <option v-for="(note, index) in notes" :key="index">
+            <option
+              v-for="(note, index) in notes"
+              :value="note.id"
+              :key="index"
+            >
               {{ note.title }}
             </option>
             <option value="new">{{ $t("New") }}</option>
@@ -236,18 +247,18 @@
 <script>
 import AppLayout from "../layouts/AppLayout.vue";
 import useVuelidate from "@vuelidate/core";
-import { IonButton } from "@ionic/vue";
+import { IonButton, IonIcon } from "@ionic/vue";
 import { required, requiredIf } from "@vuelidate/validators";
 import { useRouter } from "vue-router";
 import { mapActions, mapGetters } from "vuex";
 import SpinnerComponent from "@/components/SpinnerComponent.vue";
 export default {
-  components: { AppLayout, IonButton, SpinnerComponent },
+  components: { AppLayout, IonButton, IonIcon, SpinnerComponent },
   computed: {
     ...mapGetters({
       items: "items/all",
       notes: "notes/all",
-      customers: "customers/all"
+      customers: "customers/all",
     }),
     invoiceSubtotal() {
       return this.form.items.reduce((a, b) => a + b.subtotal, 0);
@@ -320,9 +331,9 @@ export default {
           !this.v$.form.customer.name.$error &&
           !this.v$.form.customer.address.$error &&
           !this.v$.form.customer.phone.$error &&
-          !this.v$.form.noteId.$error &&
-          !this.v$.form.note.title.$error &&
-          !this.v$.form.note.description.$error
+          !this.v$.form.noteId.$error
+          // !this.v$.form.note.title.$error &&
+          // !this.v$.form.note.description.$error
         ) {
           this.currentStep++;
         }
@@ -370,7 +381,7 @@ export default {
       fetchItems: "items/fetchAll",
       postInvoice: "invoices/postInvoice",
       fetchNotes: "notes/fetchAll",
-      fetchCustomers: "customers/fetchAll"
+      fetchCustomers: "customers/fetchAll",
     }),
   },
   setup() {
@@ -386,9 +397,9 @@ export default {
         customerId: { required },
         title: { required },
         customer: {
-          name: { required },
-          address: { required },
-          phone: { required },
+          name: { required: requiredIf(this.form.customerId === "new") },
+          address: { required: requiredIf(this.form.customerId === "new") },
+          phone: { required: requiredIf(this.form.customerId === "new") },
         },
         noteId: { required },
         note: {

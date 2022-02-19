@@ -1,12 +1,18 @@
 <template>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-page>
+    <ion-content fullscreen>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script>
-import { IonRouterOutlet } from '@ionic/vue';
+import { IonRouterOutlet, IonPage, IonContent } from '@ionic/vue';
 export default {
 components: {
-        IonRouterOutlet
+        IonRouterOutlet,
+        IonPage,
+        IonContent
     }
 }
 </script>

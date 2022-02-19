@@ -4,7 +4,7 @@
       <ion-header class="mt-7">
         <ion-toolbar style="--background: none; color: white">
           <ion-buttons slot="start">
-            <ion-back-button default-href="/"></ion-back-button>
+            <ion-back-button defaultHref="/"></ion-back-button>
           </ion-buttons>
           <ion-title>{{ title }}</ion-title>
         </ion-toolbar>
@@ -28,6 +28,7 @@ import {
   IonToolbar,
   IonTitle,
 } from "@ionic/vue";
+import { useRouter } from 'vue-router';
 export default {
   props: ["title"],
   components: {
@@ -39,6 +40,12 @@ export default {
     IonToolbar,
     IonTitle,
   },
+  setup(){
+    const router = useRouter();
+    return {
+      router
+    }
+  }
 };
 </script>
 

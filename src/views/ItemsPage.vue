@@ -1,6 +1,6 @@
 <template>
   <app-layout :title="$t('items')">
-    <ion-searchbar v-model="keyword" slot="fixed" class="bg-white" :placeholder="$t('Search')"></ion-searchbar>
+    <ion-searchbar v-model="keyword" slot="fixed" :placeholder="$t('Search')"></ion-searchbar>
     <div v-if="filteredItems.length > 0">
       <stacked-list type="items" :data="filteredItems" />
     </div>
