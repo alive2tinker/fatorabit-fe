@@ -1,5 +1,5 @@
 {
-  "name": "fatorabit-fe",
+  "name": "fatorabit",
   "version": "0.0.1",
   "private": true,
   "description": "An Ionic project",
@@ -12,7 +12,7 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
-    "@capacitor/android": "3.4.0",
+    "@capacitor/android": "3.4.1",
     "@capacitor/app": "1.1.0",
     "@capacitor/core": "3.4.0",
     "@capacitor/haptics": "1.1.4",

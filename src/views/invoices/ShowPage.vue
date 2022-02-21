@@ -55,10 +55,10 @@
       <div class="flex justify-center mt-10">
         <div class="flex justify-between w-56">
           <div
-            class="border-t-4 border-r-4 border-teal-500 rounded-tr-xl w-12 h-12"
+            class="border-t-4 rtl:border-r-4 ltr:border-l-4 border-teal-500 rtl:rounded-tr-xl ltr:rounded-tl-xl w-12 h-12"
           ></div>
           <div
-            class="border-t-4 border-l-4 border-teal-500 rounded-tl-xl w-12 h-12"
+            class="border-t-4 rtl:border-l-4 ltr:border-r-4 border-teal-500 rtl:rounded-tl-xl ltr:rounded-tr-xl w-12 h-12"
           ></div>
         </div>
       </div>
@@ -68,10 +68,10 @@
       <div class="flex justify-center -mt-10">
         <div class="flex justify-between w-56">
           <div
-            class="border-b-4 border-r-4 border-teal-500 rounded-br-xl w-12 h-12"
+            class="border-b-4 rtl:border-r-4 ltr:border-l-4 border-teal-500 rtl:rounded-br-xl ltr:rounded-bl-xl w-12 h-12"
           ></div>
           <div
-            class="border-b-4 border-l-4 border-teal-500 rounded-bl-xl w-12 h-12"
+            class="border-b-4 rtl:border-l-4 ltr:border-r-4 border-teal-500 rtl:rounded-bl-xl ltr:rounded-br-xl w-12 h-12"
           ></div>
         </div>
       </div>

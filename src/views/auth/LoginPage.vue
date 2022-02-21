@@ -12,6 +12,7 @@
       </ion-header>
       <div class="py-4 space-y-2">
         <ion-input
+        type="email"
           class="border border-gray-300 indent-2"
           :placeholder="$t('Email')"
           v-model="form.email"

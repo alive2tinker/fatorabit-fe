@@ -114,7 +114,7 @@ export default defineComponent({
   },
   data() {
     return {
-      currentStep: 3,
+      currentStep: 0,
       language: "ar",
     };
   },

@@ -1,6 +1,6 @@
 {
 	"appId": "com.fatorabit.app",
-	"appName": "fatorabit-fe",
+	"appName": "fatorabit",
 	"webDir": "dist",
 	"bundledWebRuntime": false
 }
