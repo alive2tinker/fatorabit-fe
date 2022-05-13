@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.fatorabit.app;
 
 import com.getcapacitor.BridgeActivity;
 
