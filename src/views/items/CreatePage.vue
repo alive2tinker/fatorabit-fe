@@ -11,43 +11,46 @@
       <input
         :class="{
           'w-full py-2 bg-gray-200 border focus:ring-teal-500 focus:border-teal-500 indent-2 rounded-md': true,
-          'border-red-500': v$.form.item.name_ar.$error,
+          'border-red-500': v$.form.nameAr.$error,
         }"
         :placeholder="$t('item name in Arabic')"
-        v-model="form.item.name_ar"
+        v-model="form.nameAr"
       />
       <input
         :class="{
           'w-full py-2 border focus:ring-teal-500 focus:border-teal-500 bg-gray-200 indent-2 rounded-md': true,
-          'border-red-500': v$.form.item.name_en.$error,
+          'border-red-500': v$.form.name.$error,
         }"
         :placeholder="$t('item name in English')"
-        v-model="form.item.name_en"
+        v-model="form.name"
       />
       <input
-      type="number"
+        type="number"
         :class="{
           'w-full py-2 border focus:ring-teal-500 focus:border-teal-500 bg-gray-200 indent-2 rounded-md': true,
-          'border-red-500': v$.form.item.unitPrice.$error,
+          'border-red-500': v$.form.unitPrice.$error,
         }"
         :placeholder="$t('item unit price')"
-        v-model="form.item.unitPrice"
+        v-model="form.unitPrice"
       />
-      <select :class="{
+      <select
+        :class="{
           'w-full py-2 border focus:ring-teal-500 focus:border-teal-500 bg-gray-200 indent-2 rounded-md': true,
-          'border-red-500': v$.form.item.unitPrice.$error,
-        }" v-model="form.item.vatInclusive">
+          'border-red-500': v$.form.unitPrice.$error,
+        }"
+        v-model="form.vatInclusive"
+      >
         <option value="" selected>
-                                                    {{ $t("Choose") }}
-                                                </option>
-                                                <option value="no">
-                                                    {{ $t("No") }}
-                                                </option>
-                                                <option value="yes">
-                                                    {{ $t("Yes") }}
-                                                </option>
-                                                <option value="inclusive">{{ $t('Vat Exclusive') }}</option>
-        </select>
+          {{ $t("Choose") }}
+        </option>
+        <option value="no">
+          {{ $t("No") }}
+        </option>
+        <option value="yes">
+          {{ $t("Yes") }}
+        </option>
+        <option value="inclusive">{{ $t("Vat Exclusive") }}</option>
+      </select>
       <ion-button @click="submitForm" expand="block">{{
         $t("Submit")
       }}</ion-button>
@@ -67,31 +70,29 @@ export default {
   data() {
     return {
       form: {
-        item: {
-          name_ar: "",
-          name_en: "",
-          unitPrice: "",
-          vatInclusive: "",
-        },
+        nameAr: "",
+        name: "",
+        unitPrice: "",
+        vatInclusive: "",
       },
     };
   },
   methods: {
     submitForm() {
-      this.v$.form.item.name_ar.$touch();
-      this.v$.form.item.name_en.$touch();
-      this.v$.form.item.unitPrice.$touch();
-      this.v$.form.item.vatInclusive.$touch();
-      console.log(!this.v$.form.item.$anyDirty);
+      this.v$.form.nameAr.$touch();
+      this.v$.form.name.$touch();
+      this.v$.form.unitPrice.$touch();
+      this.v$.form.vatInclusive.$touch();
+      console.log(!this.v$.form.$anyDirty);
       if (
-        !this.v$.form.item.name_ar.$error &&
-        !this.v$.form.item.name_en.$error &&
-        !this.v$.form.item.unitPrice.$error &&
-        !this.v$.form.item.vatInclusive.$error
+        !this.v$.form.nameAr.$error &&
+        !this.v$.form.name.$error &&
+        !this.v$.form.unitPrice.$error &&
+        !this.v$.form.vatInclusive.$error
       ) {
         this.postItem(this.form)
           .then(() => {
-            this.router.push('/tabs/items')
+            this.router.push("/tabs/items");
           })
           .catch((error) => {
             this.$swal.fire("Oops!", error.message, "error");
@@ -112,12 +113,10 @@ export default {
   validations() {
     return {
       form: {
-        item: {
-          name_ar: { required },
-          name_en: { required },
-          unitPrice: { required },
-          vatInclusive: { required },
-        },
+        nameAr: { required },
+        name: { required },
+        unitPrice: { required },
+        vatInclusive: { required },
       },
     };
   },
